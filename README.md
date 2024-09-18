@@ -20,13 +20,15 @@ $ git config --global core.editor "code --wait"
 
 ### Set Up the Repository
 
+_Please note that the actual GitHub UI may have changed since these screenshots were taken. If you don't see the exact same thing, look for something similar._
+
 We will form into teams of 2-3 students. **One** partner will fork and clone this repository.
 
-1. To fork the repository, verify that you are on the **Ada-CXX** repository (where XX is your cohort number), and click on the **Fork** button.
+1. To fork the repository, verify that you are on the **Ada-Activities** repository, and click on the **Fork** button.
 
 ![Fork Repo](assets/industry-prep__git-practice__fork.png)
 
-2. Then go to the **Settings** and **Collaborators & teams**.
+2. Go to the **Settings** in the options towards the top of the page (it may be necessary to enlarge your browser window to to the Settings option), then **Collaborators**.
 
 ![Settings](assets/industry-prep__git-practice__settings.png)
 
@@ -36,15 +38,17 @@ We will form into teams of 2-3 students. **One** partner will fork and clone thi
 
 ![Add collaborators](assets/industry-prep__git-practice__add-collaborators.png)
 
-![Add collaborators Access Level](assets/industry-prep__git-practice__add-collaborators-access-level.png)
+![Add collaborators](assets/industry-prep__git-practice__add-collaborators-access-level.png)
 
-4. Each team member will get an email inviting them to the repository. They should click on the accept link.
+![Confirm collaborators](assets/industry-prep__git-practice__add-collaborators-confirm.png)
+
+1. Each team member will get an email inviting them to the repository. They should click View Invitation and accept the invitation.
 
 ![Invitation email](assets/industry-prep__git-practice__add-collaborators-email.png)
 
 ### Clone the Repository
 
-Each team member should clone the repository to their local computer using:
+Each team member should clone (DO NOT fork) the repository to their local computer using:
 
 ```
 $ git clone <URL>
@@ -52,7 +56,7 @@ $ git clone <URL>
 
 Make sure you are cloning your **partner's** repository and **not** Ada's.
 
-If you `cd` into the repository and type `git remote -v` you should see your partner's repo and **NOT** Ada-CXX.
+If you `cd` into the repository and type `git remote -v` you should see your partner's repo and **NOT** Ada-Activities.
 
 ## Activity Instructions
 
@@ -200,9 +204,9 @@ This message occurs when git does not understand how to combine the changes. Thi
 
 ### Step 6: Using Zoom Screen Sharing, Resolve the Conflict
 
-To resolve this merge conflict either click on the links in VS Code to accept the current or incoming change, or edit the code to combine the changes manually.
+To resolve this merge conflict we can click Resolve in Merge Editor. This will open a new window where we can choose which changes to keep. Keep in mind that neither Git nor VS Code understand the intent of our code, so it's up to us to understand what the code was supposed to do and how to combine the changes.
 
-Notice that git really does add the lines beginning with `<<<<<<<`, `=======`, and `>>>>>>>` into the file when a merge conflict occurs. If you use the VS Code links to resolve the conflict they will automatically be removed. But if you resolve the changes manually, be sure to remove those lines from the file yourself.
+Alternatively, we can edit the file to merge the code ourselves, deleting and combining as necessary. Notice that git really does add the lines beginning with `<<<<<<<`, `=======`, and `>>>>>>>` into the file when a merge conflict occurs. If you use the VS Code links to resolve the conflict they will automatically be removed. But if you resolve the changes manually, be sure to remove those lines from the file yourself.
 
 After resolving the merge conflict, test the function by running the file before moving on.
 
