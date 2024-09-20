@@ -170,7 +170,16 @@ $ git pull
 
 The git command should open an editor with a default merge message. Close the editor window that it opened, and the command will complete.
 
+If the merge message file doesn't open in VS Code, our git may be missing a configuration value. If VS Code wasn't configured as the git editor, we'll usually see the commit message file open directly in our terminal. In that case, close the entire terminal, and open a new one. Navigate back to your project directory and run
+```bash
+git config --global core.editor "code --wait"
+```
+to fix this. Then try to `git pull` again.
+
+
 >`git pull` is doing two things. First it retrieves information about what commits are in the remote repository. Then it tries to merge those changes into the local repository. If we had pulled before committing, git would have been able to bring down the changes directly without additional intervention on our part. However, since we all committed before trying to pull, git needs to do some bookkeeping. It records a local merge commit message, but allows us to edit the message ourselves if we would like!
+
+Notice that at this point, we did not have any merge conflicts. Git will _always_ prevent pushes if the remote repository has commits that are not in the local repository, even if they do not conflict.
 
 After pulling changes from GitHub verify that the local repository matches GitHub. Then each remaining teammate should push their changes to GitHub.
 
@@ -204,9 +213,24 @@ This message occurs when git does not understand how to combine the changes. Thi
 
 ### Step 6: Using Zoom Screen Sharing, Resolve the Conflict
 
-To resolve this merge conflict we can click Resolve in Merge Editor. This will open a new window where we can choose which changes to keep. Keep in mind that neither Git nor VS Code understand the intent of our code, so it's up to us to understand what the code was supposed to do and how to combine the changes.
+There are a number of ways we could resolve this conflict.
 
-Alternatively, we can edit the file to merge the code ourselves, deleting and combining as necessary. Notice that git really does add the lines beginning with `<<<<<<<`, `=======`, and `>>>>>>>` into the file when a merge conflict occurs. If you use the VS Code links to resolve the conflict they will automatically be removed. But if you resolve the changes manually, be sure to remove those lines from the file yourself.
+We could use the actions displayed above the conflicting region to resolve the conflict. VS Code calls such actions displayed near code, but which aren't a part of the code, Code Lens. The Code Lens actions can work well for the simple cases shown here:
+- **Accept Current Change** - Keeps the portion of the code marked `(Current Change)` and discards the other code and the conflict markers.
+- **Accept Incoming Change** - Keeps the portion of the code marked `(Incoming Change)` and discards the other code and the conflict markers.
+- **Accept Both Changes** - Keeps both changes, only removing the conflict markers.
+
+The final option, `Compare Changes`, changes the view so that we can see the conflicting code side by side, which can make it easier to compare the changes.
+
+After using the Code Lens actions to resolve the conflict, we must still add any files that had conflicts, and then make a commit. But don't do this until after validating the code changes and any tests that might exist in the project.
+
+Another way to resolve a conflict is to use `Resolve in Merge Editor` option. This will take us to a view where the conflicting code appears side by side, along with a third pane showing the result of our resolution. Similar actions to the Code Lens actions are available in this view, and the bottom merged view is also directly editable. Get the code to look how you want it to look, then click `Complete Merge`.
+
+Each file with a merge conflict must be resolved. Once we've finished them all, we'll only need to commit a change to complete the merge. No adding is required. Again, be sure to validate the code changes and any tests that might exist in the project first.
+
+Keep in mind when using tools to help us with resolving a merge conflict, that neither git nor VS Code understand the intent of our code, so it's up to us to understand what the code was supposed to do and how to combine the changes.
+
+Finally, we can edit the file to merge the code ourselves, deleting and combining as necessary. Git really does add the lines beginning with `<<<<<<<`, `=======`, and `>>>>>>>` into the file when a merge conflict occurs, so if we resolve the changes manually, we must be sure to remove those lines from the file ourselves.
 
 After resolving the merge conflict, test the function by running the file before moving on.
 
@@ -218,9 +242,29 @@ python function_d.py
 
 The team member who resolved the conflict can then add and commit the file and push the changes to GitHub.
 
+For commits that are the result of resolving a merge conflict, git can generate a commit message for us, so there's no need to come up with one ourselves.
+
+By running `git commit` without the message (`-m`) arguments, it will auto-populate a message, and open it in our editor to allow us to make changes. Just close the message file, and git will complete the commit.
+
+If the commit message file doesn't open in VS Code, our git may be missing a configuration value. If VS Code wasn't configured as the git editor, we'll usually see the commit message file open directly in our terminal. In that case, close the entire terminal, and open a new one. Navigate back to your project directory and run
+```bash
+git config --global core.editor "code --wait"
+```
+to fix this. Then try to `git commit` again.
+
 ### Step 8: Everyone Pull the Current Remote Repository
 
 Lastly every team member should run `git pull` to retrieve the remote repository to their computer and verify that they have the same code on their computer.
+
+### Step 9: Experiment!
+
+Now is the time to break all the things!
+
+What kinds of things can we try? There's nothing we need to worry about breaking in this repository, so try lots of things and see what happens. Try to make note of any error messages, and research anything that feels unfamiliar. Can you get stuck in the middle of a merge? How can we get out of it if we do? If you get stuck, ask for help and we'll try to get you back on track.
+
+Try to make various changes and see what happens. Try to predict whether certain changes will cause conflicts or not. Experiment with the order of pushing and pulling to see what happens. If two people in the group make changes, what happens with the third person if they regularly update their local repository compared to if they wait to update their local repository until all the changes have been made? What happens if we try to pull but have changes that are unstaged or staged but not committed?
+
+There are lots of combinations of things to try, and ways that git will respond to them. The more we experiment, the more we'll understand how git works and how to use it effectively. A "sandbox" repository like this one is a great place to try things out and see what happens!
 
 ## Questions to Answer
 
