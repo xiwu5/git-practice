@@ -110,7 +110,7 @@ def silly_sum():
     return sum
 ```
 
-**function_c.py** - for 3-person teams
+**function_c.py**
 
 ```python
 def merge_lists(list_a, list_b):
@@ -120,6 +120,10 @@ def merge_lists(list_a, list_b):
     """
     return list(set(list_a) | set(list_b))
 ```
+
+**Teams with Four Members**
+
+If you have a 4th team member, they should NOT complete `function_d.py`, since this is used to experiment with merge conflicts in the next step. Instead, they should add a completely new file to the repository by making a copy of `function_a.py`, renamed to `function_e.py`. They should then complete the function in `function_e.py` the same way as the team member who completed `function_a.py`.
 
 ### Step 2: Add and Commit Your Function
 
