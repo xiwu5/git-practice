@@ -22,7 +22,7 @@ $ git config --global core.editor "code --wait"
 
 _Please note that the actual GitHub UI may have changed since these screenshots were taken. If you don't see the exact same thing, look for something similar._
 
-We will form into teams of 2-3 students. **One** partner will fork and clone this repository.
+We will form into teams of 3 or 4 students. **One** partner will fork and clone this repository.
 
 1. To fork the repository, verify that you are on the **Ada-Activities** repository, and click on the **Fork** button.
 
@@ -62,7 +62,7 @@ If you `cd` into the repository and type `git remote -v` you should see your par
 
 ### Step 1: Complete a Function
 
-Each team member, A, B, and (maybe) C will complete **one** of the following functions and then add and commit the file.
+Each team member, A, B, C (and maybe a 4th) will complete **one** of the following functions and then add and commit the file.
 
 So one teammate will fill in the body of the function in `function_a.py` and another will complete the body of the function in `function_b.py`, etc.
 
